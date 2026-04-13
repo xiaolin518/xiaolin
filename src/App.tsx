@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Courses from './pages/Courses';
 import CourseDetail from './pages/CourseDetail';
+import PythonBasics from './pages/PythonBasics';
 import Learn from './pages/Learn';
 import Practice from './pages/Practice';
 import Assessment from './pages/Assessment';
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/courses/:id" element={<CourseDetail />} />
+            <Route path="/courses/python-basics" element={<PythonBasics />} />
             <Route path="/courses/:id/learn/:chapterId" element={<Learn />} />
             <Route path="/courses/:id/practice/:exerciseId" element={<Practice />} />
             <Route path="/courses/:id/assessment/:testId" element={<Assessment />} />

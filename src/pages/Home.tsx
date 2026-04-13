@@ -114,30 +114,51 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">热门课程</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {courses.slice(0, 3).map((course) => (
-              <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="h-48 bg-gray-200">
-                  {course.cover_image ? (
-                    <img src={course.cover_image} alt={course.title} className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400">
-                      课程封面
-                    </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center mb-2">
-                    <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">{course.level}</span>
+            {courses.length > 0 ? (
+              courses.slice(0, 3).map((course) => (
+                <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div className="h-48 bg-gray-200">
+                    {course.cover_image ? (
+                      <img src={course.cover_image} alt={course.title} className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400">
+                        课程封面
+                      </div>
+                    )}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">{course.description}</p>
-                  <Link to={`/courses/${course.id}`} className="text-blue-600 font-medium flex items-center">
-                    查看详情
-                    <ChevronRight className="h-4 w-4 ml-1" />
-                  </Link>
+                  <div className="p-6">
+                    <div className="flex items-center mb-2">
+                      <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">{course.level}</span>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">{course.title}</h3>
+                    <p className="text-gray-600 mb-4 line-clamp-2">{course.description}</p>
+                    <Link to={`/courses/${course.id}`} className="text-blue-600 font-medium flex items-center">
+                      查看详情
+                      <ChevronRight className="h-4 w-4 ml-1" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <>
+                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <div className="h-48 bg-blue-100 flex items-center justify-center">
+                    <Code className="h-16 w-16 text-blue-600" />
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-center mb-2">
+                      <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">初级</span>
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2">Python基础课程</h3>
+                    <p className="text-gray-600 mb-4 line-clamp-2">从零开始学习Python编程基础，掌握变量、数据类型、控制流等核心概念。</p>
+                    <Link to="/courses/python-basics" className="text-blue-600 font-medium flex items-center">
+                      查看详情
+                      <ChevronRight className="h-4 w-4 ml-1" />
+                    </Link>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
           <div className="text-center mt-10">
             <Link to="/courses" className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-colors inline-flex items-center">
